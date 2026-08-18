@@ -1,0 +1,3 @@
+dataset,cell_count,window_count,x_shape,y_shape,window_size,prediction_horizon,split_strategy
+NASA,4,572,572x16x1,572x1,16,1,leave_one_cell_out
+CALCE,4,3722,3722x16x1,3722x1,16,1,leave_one_cell_out

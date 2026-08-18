@@ -1,0 +1,3 @@
+task,dataset,available,resolved_path,raw_candidates
+SOH,NASA,True,/Users/hiro_wang/Downloads/BatteryPrediction/datasets/NASA电池数据集/NASA.npy,datasets/NASA/NASA.npy|datasets/NASA电池数据集/NASA.npy
+SOH,CALCE,True,/Users/hiro_wang/Downloads/BatteryPrediction/datasets/马里兰大学锂电池数据集CALCE/CALCE.npy,datasets/CALCE/CALCE.npy|datasets/马里兰大学锂电池数据集CALCE/CALCE.npy

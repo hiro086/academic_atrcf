@@ -1,0 +1,11 @@
+model_name,model_family,network_structure,input_dim,output_dim,hidden_structure,hyperparameters,tuned,source_project
+Persistence,baseline,last observed value,window_size x 1,1,none,"window_size=16",false,benchmark baseline
+LinearTrend,baseline,least-squares window trend,window_size x 1,1,none,"window_size=16",false,benchmark baseline
+LSTM,LSTM,2-layer LSTM + Dense,16 x 1,1,"hidden=48;layers=2","epochs=8;batch=64;lr=0.001;dropout=0.1",false,NASA-LSTM
+GRU,GRU,2-layer GRU + Dense,16 x 1,1,"hidden=48;layers=2","epochs=8;batch=64;lr=0.001;dropout=0.1",false,benchmark extension
+Transformer,Transformer,TransformerEncoder + Dense,16 x 1,1,"hidden=32;heads=4;layers=1","epochs=6;batch=64;lr=0.001;dropout=0.1",false,benchmark extension
+ELM,ELM,random hidden layer + least-squares output,16,1,"hidden=32;relu","seed=42",false,CALCE-ELM-2021
+DNN,DNN,Flatten + Dense + Dropout + Dense,16 x 1,1,"dense_width=64;hidden=48","epochs=8;batch=64;lr=0.001;dropout=0.1",false,NASA-DNN
+CNN1D,1D-CNN,Conv1d + Pool + Conv1d + Dense,16 x 1,1,"channels=16/32/64;hidden=64","epochs=8;batch=64;lr=0.001;dropout=0.2",false,LiB-SOH-DL
+XGBoost,XGBoost,tree ensemble over flattened window,16,1,tree ensemble,"n_estimators=100;max_depth=3;lr=0.05",false,benchmark extension
+LightGBM,LightGBM,tree ensemble over flattened window,16,1,tree ensemble,"n_estimators=100;lr=0.05",false,benchmark extension

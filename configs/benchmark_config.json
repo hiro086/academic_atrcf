@@ -1,0 +1,152 @@
+{
+  "task_type": "SOH",
+  "main_category": "输入单特征序列+逐点预测+输出未来状态序列",
+  "method_category": "特征融合",
+  "target": {
+    "name": "soh",
+    "label_definition": "SOH = 当前放电容量 / 额定容量"
+  },
+  "input_features": ["target_history"],
+  "window_size": 16,
+  "prediction_horizon": 1,
+  "split_strategy": "leave_one_cell_out",
+  "train_ratio": 0.8,
+  "reuse_processed": true,
+  "seeds": [42],
+  "datasets": [
+    {
+      "name": "NASA",
+      "enabled": true,
+      "rated_capacity": 2.0,
+      "eol_threshold_ratio": 0.8,
+      "raw_candidates": [
+        "datasets/NASA/NASA.npy",
+        "datasets/NASA电池数据集/NASA.npy"
+      ]
+    },
+    {
+      "name": "CALCE",
+      "enabled": true,
+      "rated_capacity": 1.1,
+      "eol_threshold_ratio": 0.8,
+      "raw_candidates": [
+        "datasets/CALCE/CALCE.npy",
+        "datasets/马里兰大学锂电池数据集CALCE/CALCE.npy"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "name": "Trend_Prior_l1",
+      "model_family": "baseline",
+      "backend": "trend_prior_l1",
+      "enabled": true,
+      "tuned": false
+    },
+    {
+      "name": "Trend_Prior_l2",
+      "model_family": "baseline",
+      "backend": "trend_prior_l2",
+      "enabled": true,
+      "tuned": false
+    },
+    {
+      "name": "LSTM",
+      "model_family": "LSTM",
+      "backend": "torch",
+      "architecture": "lstm",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 48,
+      "num_layers": 2,
+      "epochs": 8,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "name": "GRU",
+      "model_family": "GRU",
+      "backend": "torch",
+      "architecture": "gru",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 48,
+      "num_layers": 2,
+      "epochs": 8,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "name": "Transformer",
+      "model_family": "Transformer",
+      "backend": "torch",
+      "architecture": "transformer",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 32,
+      "num_layers": 1,
+      "nhead": 4,
+      "epochs": 6,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "name": "ELM",
+      "model_family": "ELM",
+      "backend": "elm",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 32,
+      "activation": "relu"
+    },
+    {
+      "name": "DNN",
+      "model_family": "DNN",
+      "backend": "torch",
+      "architecture": "dnn",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 48,
+      "dense_width": 64,
+      "epochs": 8,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "name": "CNN1D",
+      "model_family": "1D-CNN",
+      "backend": "torch",
+      "architecture": "cnn1d",
+      "enabled": true,
+      "tuned": false,
+      "hidden_size": 64,
+      "epochs": 8,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.2
+    },
+    {
+      "name": "XGBoost",
+      "model_family": "XGBoost",
+      "backend": "xgboost",
+      "enabled": true,
+      "tuned": false,
+      "n_estimators": 100,
+      "max_depth": 3,
+      "learning_rate": 0.05
+    },
+    {
+      "name": "LightGBM",
+      "model_family": "LightGBM",
+      "backend": "lightgbm",
+      "enabled": true,
+      "tuned": false,
+      "n_estimators": 100,
+      "learning_rate": 0.05
+    }
+  ]
+}

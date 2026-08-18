@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="30" font-size="18">RMSE</text>
+<rect x="90" y="45.0" width="70" height="220.0" fill="#4F81BD"/>
+<text x="90" y="290" font-size="11">CALCE</text>
+<rect x="210" y="83.9" width="70" height="181.1" fill="#4F81BD"/>
+<text x="210" y="290" font-size="11">NASA</text>
+</svg>
